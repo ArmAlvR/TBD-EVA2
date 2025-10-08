@@ -1,0 +1,641 @@
+MySQL Shell 8.0.43
+
+Copyright (c) 2016, 2025, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \c root@localhost
+Creating a session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 12 (X protocol)
+Server version: 8.0.43 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:33060+ ssl  SQL > use sakila
+Default schema set to `sakila`.
+Fetching global names, object names from `sakila` for auto-completion... Press ^C to stop.
+ MySQL  localhost:33060+ ssl  sakila  SQL > SELECT
+                                         ->     c.first_name,
+                                         ->     c.last_name,
+                                         ->     r.rental_id,
+                                         -> FROM
+                                         ->     customer AS c
+                                         -> INNER JOIN
+                                         ->     rental AS r ON c.customer_id = r.customer_id
+                                         -> LIMIT 100;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'FROM
+    customer AS c
+INNER JOIN
+    rental AS r ON c.customer_id = r.customer_' at line 5
+ MySQL  localhost:33060+ ssl  sakila  SQL > SELECT
+                                         -> c.first_name,
+                                         -> c.last_name,
+                                         -> r.rental_id
+                                         -> FROM
+                                         -> customer AS c
+                                         -> INNER JOIN
+                                         -> rental AS r ON c.customer_id = r.customer_id
+                                         -> LIMIT
+                                         -> 100;
++------------+-----------+-----------+
+| first_name | last_name | rental_id |
++------------+-----------+-----------+
+| MARY       | SMITH     |        76 |
+| MARY       | SMITH     |       573 |
+| MARY       | SMITH     |      1185 |
+| MARY       | SMITH     |      1422 |
+| MARY       | SMITH     |      1476 |
+| MARY       | SMITH     |      1725 |
+| MARY       | SMITH     |      2308 |
+| MARY       | SMITH     |      2363 |
+| MARY       | SMITH     |      3284 |
+| MARY       | SMITH     |      4526 |
+| MARY       | SMITH     |      4611 |
+| MARY       | SMITH     |      5244 |
+| MARY       | SMITH     |      5326 |
+| MARY       | SMITH     |      6163 |
+| MARY       | SMITH     |      7273 |
+| MARY       | SMITH     |      7841 |
+| MARY       | SMITH     |      8033 |
+| MARY       | SMITH     |      8074 |
+| MARY       | SMITH     |      8116 |
+| MARY       | SMITH     |      8326 |
+| MARY       | SMITH     |      9571 |
+| MARY       | SMITH     |     10437 |
+| MARY       | SMITH     |     11299 |
+| MARY       | SMITH     |     11367 |
+| MARY       | SMITH     |     11824 |
+| MARY       | SMITH     |     12250 |
+| MARY       | SMITH     |     13068 |
+| MARY       | SMITH     |     13176 |
+| MARY       | SMITH     |     14762 |
+| MARY       | SMITH     |     14825 |
+| MARY       | SMITH     |     15298 |
+| MARY       | SMITH     |     15315 |
+| PATRICIA   | JOHNSON   |       320 |
+| PATRICIA   | JOHNSON   |      2128 |
+| PATRICIA   | JOHNSON   |      5636 |
+| PATRICIA   | JOHNSON   |      5755 |
+| PATRICIA   | JOHNSON   |      7346 |
+| PATRICIA   | JOHNSON   |      7376 |
+| PATRICIA   | JOHNSON   |      7459 |
+| PATRICIA   | JOHNSON   |      8230 |
+| PATRICIA   | JOHNSON   |      8598 |
+| PATRICIA   | JOHNSON   |      8705 |
+| PATRICIA   | JOHNSON   |      9031 |
+| PATRICIA   | JOHNSON   |      9236 |
+| PATRICIA   | JOHNSON   |      9248 |
+| PATRICIA   | JOHNSON   |      9296 |
+| PATRICIA   | JOHNSON   |      9465 |
+| PATRICIA   | JOHNSON   |     10136 |
+| PATRICIA   | JOHNSON   |     10466 |
+| PATRICIA   | JOHNSON   |     10918 |
+| PATRICIA   | JOHNSON   |     11087 |
+| PATRICIA   | JOHNSON   |     11177 |
+| PATRICIA   | JOHNSON   |     11256 |
+| PATRICIA   | JOHNSON   |     11614 |
+| PATRICIA   | JOHNSON   |     12963 |
+| PATRICIA   | JOHNSON   |     14475 |
+| PATRICIA   | JOHNSON   |     14743 |
+| PATRICIA   | JOHNSON   |     15145 |
+| PATRICIA   | JOHNSON   |     15907 |
+| LINDA      | WILLIAMS  |       435 |
+| LINDA      | WILLIAMS  |       830 |
+| LINDA      | WILLIAMS  |      1546 |
+| LINDA      | WILLIAMS  |      1726 |
+| LINDA      | WILLIAMS  |      1911 |
+| LINDA      | WILLIAMS  |      2628 |
+| LINDA      | WILLIAMS  |      4180 |
+| LINDA      | WILLIAMS  |      4725 |
+| LINDA      | WILLIAMS  |      7096 |
+| LINDA      | WILLIAMS  |      7503 |
+| LINDA      | WILLIAMS  |      7703 |
+| LINDA      | WILLIAMS  |      7724 |
+| LINDA      | WILLIAMS  |      7911 |
+| LINDA      | WILLIAMS  |      8086 |
+| LINDA      | WILLIAMS  |      8545 |
+| LINDA      | WILLIAMS  |      9226 |
+| LINDA      | WILLIAMS  |      9443 |
+| LINDA      | WILLIAMS  |      9595 |
+| LINDA      | WILLIAMS  |      9816 |
+| LINDA      | WILLIAMS  |     10597 |
+| LINDA      | WILLIAMS  |     12556 |
+| LINDA      | WILLIAMS  |     13403 |
+| LINDA      | WILLIAMS  |     13610 |
+| LINDA      | WILLIAMS  |     14699 |
+| LINDA      | WILLIAMS  |     15038 |
+| LINDA      | WILLIAMS  |     15619 |
+| BARBARA    | JONES     |      1297 |
+| BARBARA    | JONES     |      1633 |
+| BARBARA    | JONES     |      1707 |
+| BARBARA    | JONES     |      1735 |
+| BARBARA    | JONES     |      2043 |
+| BARBARA    | JONES     |      2642 |
+| BARBARA    | JONES     |      7660 |
+| BARBARA    | JONES     |      7718 |
+| BARBARA    | JONES     |      8741 |
+| BARBARA    | JONES     |      9100 |
+| BARBARA    | JONES     |      9371 |
+| BARBARA    | JONES     |     11069 |
+| BARBARA    | JONES     |     11110 |
+| BARBARA    | JONES     |     11529 |
+| BARBARA    | JONES     |     12151 |
++------------+-----------+-----------+
+100 rows in set (0.0084 sec)
+ MySQL  localhofffffilm_category AS ab ON a.film_id = ab.film_idON a.film_id = ab.fil
+                                         -> LIMIT 100;ory AS ab ON a.film_id = ab.fi
+ERROR: 1054: Unknown column 'b.name' in 'field list'egory AS ab ON a.film_id = ab.f
+ MySQL  localhost:33060+ ssl  sakila  SQL > ^Clm_category AS ab ON a.film_id = ab.
+ MySQL  localhost:33060+ ssl  sakila  SQL > ^Clm_category AS ab ON a.film_id = ab
+ MySQL  localhost:33060+ ssl  sakila  SQL > ^Clm_category AS ab ON a.film_id = a
+ MySQL  localhost:33060+ ssl  sakila  SQL > ^Clm_category AS ab ON a.film_id =
+ MySQL  localhost:33060+ ssl  sakila  SQL > ^Clm_category AS ab ON a.film_id =
+ MySQL  localhost:33060+ ssl  sakila  SQL > ^Clm_category AS ab ON a.film_id
+ MySQL  localhost:33060+ ssl  sakila  SQL > ^Clm_category AS ab ON a.film_id
+ MySQL  localhost:33060+ ssl  sakila  SQL > ^C
+ MySQL  localhost:33060+ ssl  sakila  SQL > SELECT a.title AS Titulo, b.name AS Categoria FROM film AS a INNER JOIN film_category AS ab ON a.film_id = ab.film_id LIMIT 100;
+ERROR: 1054: Unknown column 'b.name' in 'field list'
+ MySQL  localhost:33060+ ssl  sakila  SQL > SELECT a.title AS Titulo, b.name AS Categoria FROM film AS a INNER JOIN film_category AS ab ON a.film_id = ab.film_id
+                                         -> INNER JOIN
+                                         -> category AS b ON ab.category_id = b.category_id
+
+                                         -> LIMIT 100;
++-------------------------+-----------+
+| Titulo                  | Categoria |
++-------------------------+-----------+
+| AMADEUS HOLY            | Action    |
+| AMERICAN CIRCUS         | Action    |
+| ANTITRUST TOMATOES      | Action    |
+| ARK RIDGEMONT           | Action    |
+| BAREFOOT MANCHURIAN     | Action    |
+| BERETS AGENT            | Action    |
+| BRIDE INTRIGUE          | Action    |
+| BULL SHAWSHANK          | Action    |
+| CADDYSHACK JEDI         | Action    |
+| CAMPUS REMEMBER         | Action    |
+| CASUALTIES ENCINO       | Action    |
+| CELEBRITY HORN          | Action    |
+| CLUELESS BUCKET         | Action    |
+| CROW GREASE             | Action    |
+| DANCES NONE             | Action    |
+| DARKO DORADO            | Action    |
+| DARN FORRESTER          | Action    |
+| DEVIL DESIRE            | Action    |
+| DRAGON SQUAD            | Action    |
+| DREAM PICKUP            | Action    |
+| DRIFTER COMMANDMENTS    | Action    |
+| EASY GLADIATOR          | Action    |
+| ENTRAPMENT SATISFACTION | Action    |
+| EXCITEMENT EVE          | Action    |
+| FANTASY TROOPERS        | Action    |
+| FIREHOUSE VIETNAM       | Action    |
+| FOOL MOCKINGBIRD        | Action    |
+| FORREST SONS            | Action    |
+| GLASS DYING             | Action    |
+| GOSFORD DONNIE          | Action    |
+| GRAIL FRANKENSTEIN      | Action    |
+| HANDICAP BOONDOCK       | Action    |
+| HILLS NEIGHBORS         | Action    |
+| KISSING DOLLS           | Action    |
+| LAWRENCE LOVE           | Action    |
+| LORD ARIZONA            | Action    |
+| LUST LOCK               | Action    |
+| MAGNOLIA FORRESTER      | Action    |
+| MIDNIGHT WESTWARD       | Action    |
+| MINDS TRUMAN            | Action    |
+| MOCKINGBIRD HOLLYWOOD   | Action    |
+| MONTEZUMA COMMAND       | Action    |
+| PARK CITIZEN            | Action    |
+| PATRIOT ROMAN           | Action    |
+| PRIMARY GLASS           | Action    |
+| QUEST MUSSOLINI         | Action    |
+| REAR TRADING            | Action    |
+| RINGS HEARTBREAKERS     | Action    |
+| RUGRATS SHAKESPEARE     | Action    |
+| SHRUNK DIVINE           | Action    |
+| SIDE ARK                | Action    |
+| SKY MIRACLE             | Action    |
+| SOUTH WAIT              | Action    |
+| SPEAKEASY DATE          | Action    |
+| STAGECOACH ARMAGEDDON   | Action    |
+| STORY SIDE              | Action    |
+| SUSPECTS QUILLS         | Action    |
+| TRIP NEWTON             | Action    |
+| TRUMAN CRAZY            | Action    |
+| UPRISING UPTOWN         | Action    |
+| WATERFRONT DELIVERANCE  | Action    |
+| WEREWOLF LOLA           | Action    |
+| WOMEN DORADO            | Action    |
+| WORST BANGER            | Action    |
+| ALTER VICTORY           | Animation |
+| ANACONDA CONFESSIONS    | Animation |
+| ARGONAUTS TOWN          | Animation |
+| BIKINI BORROWERS        | Animation |
+| BLACKOUT PRIVATE        | Animation |
+| BORROWERS BEDAZZLED     | Animation |
+| CANYON STOCK            | Animation |
+| CAROL TEXAS             | Animation |
+| CHAMPION FLATLINERS     | Animation |
+| CLASH FREDDY            | Animation |
+| CLUB GRAFFITI           | Animation |
+| CROSSROADS CASUALTIES   | Animation |
+| DARES PLUTO             | Animation |
+| DESIRE ALIEN            | Animation |
+| DOGMA FAMILY            | Animation |
+| DONNIE ALLEY            | Animation |
+| DOORS PRESIDENT         | Animation |
+| DOUBLE WRATH            | Animation |
+| DUCK RACER              | Animation |
+| EARLY HOME              | Animation |
+| FALCON VOLUME           | Animation |
+| FIGHT JAWBREAKER        | Animation |
+| FLOATS GARDEN           | Animation |
+| FLYING HOOK             | Animation |
+| FORRESTER COMANCHEROS   | Animation |
+| GANGS PRIDE             | Animation |
+| GHOSTBUSTERS ELF        | Animation |
+| HARPER DYING            | Animation |
+| HOOK CHARIOTS           | Animation |
+| HORN WORKING            | Animation |
+| INCH JET                | Animation |
+| INSECTS STONE           | Animation |
+| INTENTIONS EMPIRE       | Animation |
+| ISHTAR ROCKETEER        | Animation |
+| JUGGLER HARDLY          | Animation |
+| LAWLESS VISION          | Animation |
++-------------------------+-----------+
+100 rows in set (0.0022 sec)
+ MySQL  localhost:33060+ ssl  sakila  SQL > SELECT
+                                         -> c.first_name AS Nombre,
+                                         -> c.last_name AS Apellido,
+                                         -> f.title AS PeliculaRentada
+                                         -> FROM
+                                         -> customer AS c
+                                         -> INNER JOIN
+                                         -> rental AS r ON c.customer_id = r.customer_id
+                                         -> INNER JOIN
+                                         -> inventory AS i ON r.inventory_id = i.inventory_id
+                                         -> INNER JOIN
+                                         -> film AS f ON i.film_id = f.film_id
+                                         -> LIMIT
+                                         -> 100;
++-----------+-------------+------------------+
+| Nombre    | Apellido    | PeliculaRentada  |
++-----------+-------------+------------------+
+| JOEL      | FRANCISCO   | ACADEMY DINOSAUR |
+| GABRIEL   | HARDER      | ACADEMY DINOSAUR |
+| DIANNE    | SHELTON     | ACADEMY DINOSAUR |
+| NORMAN    | CURRIER     | ACADEMY DINOSAUR |
+| BEATRICE  | ARNOLD      | ACADEMY DINOSAUR |
+| GERALDINE | PERKINS     | ACADEMY DINOSAUR |
+| VIRGIL    | WOFFORD     | ACADEMY DINOSAUR |
+| WILLIE    | MARKHAM     | ACADEMY DINOSAUR |
+| DEBRA     | NELSON      | ACADEMY DINOSAUR |
+| DARREN    | WINDHAM     | ACADEMY DINOSAUR |
+| ROBERT    | BAUGHMAN    | ACADEMY DINOSAUR |
+| HENRY     | BILLINGSLEY | ACADEMY DINOSAUR |
+| SERGIO    | STANFIELD   | ACADEMY DINOSAUR |
+| FREDDIE   | DUGGAN      | ACADEMY DINOSAUR |
+| MARIE     | TURNER      | ACADEMY DINOSAUR |
+| MATTIE    | HOFFMAN     | ACADEMY DINOSAUR |
+| DWAYNE    | OLVERA      | ACADEMY DINOSAUR |
+| CARL      | ARTIS       | ACADEMY DINOSAUR |
+| NATHAN    | RUNYON      | ACADEMY DINOSAUR |
+| HECTOR    | POINDEXTER  | ACADEMY DINOSAUR |
+| TINA      | SIMMONS     | ACADEMY DINOSAUR |
+| SUSAN     | WILSON      | ACADEMY DINOSAUR |
+| REBECCA   | SCOTT       | ACADEMY DINOSAUR |
+| PENNY     | NEAL        | ACE GOLDFINGER   |
+| BRANDON   | HUEY        | ACE GOLDFINGER   |
+| LUCILLE   | HOLMES      | ACE GOLDFINGER   |
+| KATHRYN   | COLEMAN     | ACE GOLDFINGER   |
+| AMBER     | DIXON       | ACE GOLDFINGER   |
+| STACY     | CUNNINGHAM  | ACE GOLDFINGER   |
+| JESSIE    | MILAM       | ACE GOLDFINGER   |
+| PEARL     | GARZA       | ADAPTATION HOLES |
+| TRAVIS    | ESTEP       | ADAPTATION HOLES |
+| STELLA    | MORENO      | ADAPTATION HOLES |
+| CASSANDRA | WALTERS     | ADAPTATION HOLES |
+| DEBORAH   | WALKER      | ADAPTATION HOLES |
+| ROBIN     | HAYES       | ADAPTATION HOLES |
+| OLGA      | JIMENEZ     | ADAPTATION HOLES |
+| MARY      | SMITH       | ADAPTATION HOLES |
+| ROSE      | HOWARD      | ADAPTATION HOLES |
+| JOANNE    | ROBERTSON   | ADAPTATION HOLES |
+| STEVEN    | CURLEY      | ADAPTATION HOLES |
+| MARION    | SNYDER      | ADAPTATION HOLES |
+| VIVIAN    | RUIZ        | AFFAIR PREJUDICE |
+| NINA      | SOTO        | AFFAIR PREJUDICE |
+| JORDAN    | ARCHULETA   | AFFAIR PREJUDICE |
+| DANIELLE  | DANIELS     | AFFAIR PREJUDICE |
+| SUE       | PETERS      | AFFAIR PREJUDICE |
+| MICHAEL   | SILVERMAN   | AFFAIR PREJUDICE |
+| JEFF      | EAST        | AFFAIR PREJUDICE |
+| MEGAN     | PALMER      | AFFAIR PREJUDICE |
+| ELEANOR   | HUNT        | AFFAIR PREJUDICE |
+| NATALIE   | MEYER       | AFFAIR PREJUDICE |
+| TOMMY     | COLLAZO     | AFFAIR PREJUDICE |
+| MINNIE    | ROMERO      | AFFAIR PREJUDICE |
+| CARMEN    | OWENS       | AFFAIR PREJUDICE |
+| DEANNA    | BYRD        | AFFAIR PREJUDICE |
+| KIMBERLY  | LEE         | AFFAIR PREJUDICE |
+| BEVERLY   | BROOKS      | AFFAIR PREJUDICE |
+| JIMMY     | SCHRADER    | AFFAIR PREJUDICE |
+| JANICE    | WARD        | AFFAIR PREJUDICE |
+| RUBEN     | GEARY       | AFFAIR PREJUDICE |
+| CARMEN    | OWENS       | AFFAIR PREJUDICE |
+| WALLACE   | SLONE       | AFFAIR PREJUDICE |
+| OSCAR     | AQUINO      | AFFAIR PREJUDICE |
+| JEROME    | KENYON      | AFFAIR PREJUDICE |
+| CONNIE    | WALLACE     | AFRICAN EGG      |
+| RICARDO   | MEADOR      | AFRICAN EGG      |
+| BARRY     | LOVELACE    | AFRICAN EGG      |
+| CASEY     | MENA        | AFRICAN EGG      |
+| JOSHUA    | MARK        | AFRICAN EGG      |
+| CURTIS    | IRBY        | AFRICAN EGG      |
+| NORA      | HERRERA     | AFRICAN EGG      |
+| AMY       | LOPEZ       | AFRICAN EGG      |
+| ELAINE    | STEVENS     | AFRICAN EGG      |
+| GILBERT   | SLEDGE      | AFRICAN EGG      |
+| JOYCE     | EDWARDS     | AFRICAN EGG      |
+| SETH      | HANNON      | AFRICAN EGG      |
+| CLARENCE  | GAMEZ       | AGENT TRUMAN     |
+| JANET     | PHILLIPS    | AGENT TRUMAN     |
+| LESLIE    | SEWARD      | AGENT TRUMAN     |
+| PERRY     | SWAFFORD    | AGENT TRUMAN     |
+| IDA       | ANDREWS     | AGENT TRUMAN     |
+| CATHERINE | CAMPBELL    | AGENT TRUMAN     |
+| TERRY     | GRISSOM     | AGENT TRUMAN     |
+| BETTY     | WHITE       | AGENT TRUMAN     |
+| ALAN      | KAHN        | AGENT TRUMAN     |
+| ELIZABETH | BROWN       | AGENT TRUMAN     |
+| TONYA     | CHAPMAN     | AGENT TRUMAN     |
+| TRACY     | COLE        | AGENT TRUMAN     |
+| DIANE     | COLLINS     | AGENT TRUMAN     |
+| CORY      | MEEHAN      | AGENT TRUMAN     |
+| MAURICE   | CRAWLEY     | AGENT TRUMAN     |
+| GINA      | WILLIAMSON  | AGENT TRUMAN     |
+| ANTHONY   | SCHWAB      | AGENT TRUMAN     |
+| CLINTON   | BUFORD      | AGENT TRUMAN     |
+| KRISTIN   | JOHNSTON    | AGENT TRUMAN     |
+| ROSEMARY  | SCHMIDT     | AGENT TRUMAN     |
+| MARTHA    | GONZALEZ    | AGENT TRUMAN     |
+| FRED      | WHEAT       | AIRPLANE SIERRA  |
+| DEAN      | SAUER       | AIRPLANE SIERRA  |
++-----------+-------------+------------------+
+100 rows in set (0.0245 sec)
+ MySQL  localhost:33060+ ssl  sakila  SQL > SELECT
+                                         -> i.store_id AS Tienda,
+                                         -> f.title AS Pelicula,
+                                         -> COUNT(i.inventory_id) AS CopiasDisponibles
+                                         -> FROM
+                                         -> inventory AS i
+                                         -> INNER JOIN
+                                         -> film AS f ON i.film_id = f.film_id
+                                         -> LIMIT
+                                         -> 100;
+ERROR: 1140: In aggregated query without GROUP BY, expression #1 of SELECT list contains nonaggregated column 'sakila.i.store_id'; this is incompatible with sql_mode=only_full_group_by
+ MySQL  localhost:33060+ ssl  sakila  SQL > SELECT i.store_id AS Tienda, f.title AS Pelicula, COUNT(i.inventory_id) AS CopiasDisponibles FROM inventory AS i INNER JOIN film AS f ON i.film_id = f.film_id GROUP BY i.store_id, f,title LIMIT 100;
+ERROR: 1054: Unknown column 'f' in 'group statement'
+ MySQL  localhost:33060+ ssl  sakila  SQL > SELECT i.store_id AS Tienda, f.title AS Pelicula, COUNT(i.inventory_id) AS CopiasDisponibles FROM inventory AS i INNER JOIN film AS f ON i.film_id = f.film_id GROUP BY i.store_id, f.title LIMIT 100;
++--------+-----------------------------+-------------------+
+| Tienda | Pelicula                    | CopiasDisponibles |
++--------+-----------------------------+-------------------+
+|      1 | ACADEMY DINOSAUR            |                 4 |
+|      1 | AFFAIR PREJUDICE            |                 4 |
+|      1 | AGENT TRUMAN                |                 3 |
+|      1 | AIRPLANE SIERRA             |                 2 |
+|      1 | ALABAMA DEVIL               |                 3 |
+|      1 | ALADDIN CALENDAR            |                 4 |
+|      1 | ALAMO VIDEOTAPE             |                 4 |
+|      1 | ALASKA PHANTOM              |                 3 |
+|      1 | ALIEN CENTER                |                 2 |
+|      1 | ALLEY EVOLUTION             |                 2 |
+|      1 | ALONE TRIP                  |                 3 |
+|      1 | ALTER VICTORY               |                 3 |
+|      1 | AMADEUS HOLY                |                 4 |
+|      1 | AMELIE HELLFIGHTERS         |                 3 |
+|      1 | AMERICAN CIRCUS             |                 2 |
+|      1 | AMISTAD MIDSUMMER           |                 4 |
+|      1 | ANACONDA CONFESSIONS        |                 3 |
+|      1 | ANALYZE HOOSIERS            |                 4 |
+|      1 | ANGELS LIFE                 |                 4 |
+|      1 | ANNIE IDENTITY              |                 2 |
+|      1 | ANONYMOUS HUMAN             |                 4 |
+|      1 | ANTHEM LUKE                 |                 3 |
+|      1 | ANTITRUST TOMATOES          |                 2 |
+|      1 | ANYTHING SAVANNAH           |                 2 |
+|      1 | APACHE DIVINE               |                 4 |
+|      1 | ARACHNOPHOBIA ROLLERCOASTER |                 4 |
+|      1 | ARIZONA BANG                |                 4 |
+|      1 | ARMAGEDDON LOST             |                 3 |
+|      1 | ATLANTIS CAUSE              |                 3 |
+|      1 | ATTACKS HATE                |                 2 |
+|      1 | ATTRACTION NEWTON           |                 4 |
+|      1 | BACKLASH UNDEFEATED         |                 2 |
+|      1 | BADMAN DAWN                 |                 3 |
+|      1 | BAKED CLEOPATRA             |                 3 |
+|      1 | BALLOON HOMEWARD            |                 2 |
+|      1 | BANG KWAI                   |                 2 |
+|      1 | BANGER PINOCCHIO            |                 3 |
+|      1 | BARBARELLA STREETCAR        |                 4 |
+|      1 | BAREFOOT MANCHURIAN         |                 3 |
+|      1 | BASIC EASY                  |                 4 |
+|      1 | BEAR GRACELAND              |                 3 |
+|      1 | BEAST HUNCHBACK             |                 3 |
+|      1 | BEAUTY GREASE               |                 4 |
+|      1 | BEDAZZLED MARRIED           |                 2 |
+|      1 | BENEATH RUSH                |                 3 |
+|      1 | BERETS AGENT                |                 2 |
+|      1 | BETRAYED REAR               |                 2 |
+|      1 | BEVERLY OUTLAW              |                 4 |
+|      1 | BIKINI BORROWERS            |                 2 |
+|      1 | BILL OTHERS                 |                 4 |
+|      1 | BINGO TALENTED              |                 4 |
+|      1 | BIRCH ANTITRUST             |                 3 |
+|      1 | BIRDCAGE CASPER             |                 3 |
+|      1 | BIRDS PERDITION             |                 4 |
+|      1 | BLACKOUT PRIVATE            |                 3 |
+|      1 | BLADE POLISH                |                 3 |
+|      1 | BLANKET BEVERLY             |                 4 |
+|      1 | BLINDNESS GUN               |                 4 |
+|      1 | BLOOD ARGONAUTS             |                 2 |
+|      1 | BLUES INSTINCT              |                 3 |
+|      1 | BOILED DARES                |                 4 |
+|      1 | BOOGIE AMELIE               |                 4 |
+|      1 | BORROWERS BEDAZZLED         |                 3 |
+|      1 | BOULEVARD MOB               |                 3 |
+|      1 | BOUND CHEAPER               |                 4 |
+|      1 | BOWFINGER GABLES            |                 2 |
+|      1 | BRAVEHEART HUMAN            |                 2 |
+|      1 | BREAKFAST GOLDFINGER        |                 2 |
+|      1 | BREAKING HOME               |                 3 |
+|      1 | BRIDE INTRIGUE              |                 4 |
+|      1 | BRIGHT ENCOUNTERS           |                 3 |
+|      1 | BRINGING HYSTERICAL         |                 3 |
+|      1 | BROOKLYN DESERT             |                 4 |
+|      1 | BROTHERHOOD BLANKET         |                 4 |
+|      1 | BUCKET BROTHERHOOD          |                 4 |
+|      1 | BULL SHAWSHANK              |                 2 |
+|      1 | BULWORTH COMMANDMENTS       |                 2 |
+|      1 | BUTTERFLY CHOCOLAT          |                 4 |
+|      1 | CABIN FLASH                 |                 4 |
+|      1 | CALENDAR GUNFIGHT           |                 4 |
+|      1 | CAMELOT VACATION            |                 4 |
+|      1 | CAMPUS REMEMBER             |                 3 |
+|      1 | CANDIDATE PERDITION         |                 2 |
+|      1 | CANDLES GRAPES              |                 4 |
+|      1 | CANYON STOCK                |                 4 |
+|      1 | CAPER MOTIONS               |                 3 |
+|      1 | CARIBBEAN LIBERTY           |                 3 |
+|      1 | CAROL TEXAS                 |                 3 |
+|      1 | CARRIE BUNCH                |                 4 |
+|      1 | CASABLANCA SUPER            |                 2 |
+|      1 | CAT CONEHEADS               |                 4 |
+|      1 | CAUSE DATE                  |                 3 |
+|      1 | CELEBRITY HORN              |                 2 |
+|      1 | CENTER DINOSAUR             |                 4 |
+|      1 | CHAINSAW UPTOWN             |                 4 |
+|      1 | CHAMBER ITALIAN             |                 2 |
+|      1 | CHANCE RESURRECTION         |                 3 |
+|      1 | CHAPLIN LICENSE             |                 3 |
+|      1 | CHARIOTS CONSPIRACY         |                 2 |
+|      1 | CHASING FIGHT               |                 4 |
++--------+-----------------------------+-------------------+
+100 rows in set (0.0861 sec)
+ MySQL  localhost:33060+ ssl  sakila  SQL > SELECT
+                                         -> c.first_name AS NombreCliente,
+                                         -> c.last_name AS ApellidoCliente,
+                                         -> f.title AS PeliculaRentada,
+                                         -> r.rental_date AS FechaDeRenta,
+                                         -> s.first_name AS NombreEmpleado,
+                                         -> s.last_name AS ApellidoEmpleado
+                                         -> ,
+                                         -> ^C
+ MySQL  localhost:33060+ ssl  sakila  SQL > SELECT
+                                         -> c.first_name AS NombreCliente,
+                                         -> c.last_name AS ApellidoCliente,
+                                         -> f.title AS PeliculaRentada,
+                                         -> r.rental_date AS FechaDeRenta,
+                                         -> s.first_name AS NombreEmpleado,
+                                         -> s.last_name AS ApellidoEmpleado
+                                         -> FROM
+                                         ->     rental AS r
+                                         -> INNER JOIN
+                                         ->     customer AS c ON r.customer_id = c.customer_id
+                                         -> INNER JOIN
+                                         ->     staff AS s ON r.staff_id = s.staff_id
+                                         -> INNER JOIN
+                                         ->     inventory AS i ON r.inventory_id = i.inventory_id
+
+                                         -> INNER JOIN
+                                         ->     film AS f ON i.film_id = f.film_id
+                                         -> LIMIT 100;
++---------------+-----------------+-------------------+---------------------+----------------+------------------+
+| NombreCliente | ApellidoCliente | PeliculaRentada   | FechaDeRenta        | NombreEmpleado | ApellidoEmpleado |
++---------------+-----------------+-------------------+---------------------+----------------+------------------+
+| BRANDY        | GRAVES          | HUMAN GRAFFITI    | 2005-08-17 17:28:01 | Mike           | Hillyer          |
+| RAMONA        | HALE            | HUMAN GRAFFITI    | 2005-07-30 14:15:02 | Mike           | Hillyer          |
+| ARTHUR        | SIMPKINS        | HUMAN GRAFFITI    | 2005-08-02 06:52:54 | Mike           | Hillyer          |
+| BYRON         | BOX             | HUMAN GRAFFITI    | 2005-07-12 12:37:00 | Mike           | Hillyer          |
+| JEREMY        | HURTADO         | HUMAN GRAFFITI    | 2005-07-10 03:46:47 | Mike           | Hillyer          |
+| KIM           | CRUZ            | HUMAN GRAFFITI    | 2005-07-30 00:22:31 | Mike           | Hillyer          |
+| CAROLE        | BARNETT         | HUMAN GRAFFITI    | 2005-07-08 21:26:11 | Mike           | Hillyer          |
+| CHARLIE       | BESS            | HOUSE DYNAMITE    | 2005-08-23 20:16:27 | Mike           | Hillyer          |
+| CODY          | NOLEN           | HOUSE DYNAMITE    | 2005-07-29 11:35:46 | Mike           | Hillyer          |
+| GREG          | ROBINS          | HOUSE DYNAMITE    | 2005-08-21 17:38:37 | Mike           | Hillyer          |
+| ROBIN         | HAYES           | HOUSE DYNAMITE    | 2005-07-07 11:35:08 | Mike           | Hillyer          |
+| DAVE          | GARDINER        | HOUSE DYNAMITE    | 2005-08-22 06:30:28 | Mike           | Hillyer          |
+| ANDREW        | PURDY           | HOUSE DYNAMITE    | 2005-06-20 17:40:12 | Mike           | Hillyer          |
+| JIM           | REA             | HOUSE DYNAMITE    | 2005-08-20 08:20:19 | Mike           | Hillyer          |
+| JOYCE         | EDWARDS         | HOUSE DYNAMITE    | 2005-07-10 00:09:45 | Mike           | Hillyer          |
+| MARCUS        | HIDALGO         | HOUSE DYNAMITE    | 2005-06-19 02:51:04 | Mike           | Hillyer          |
+| MAXINE        | SILVA           | HOUSE DYNAMITE    | 2005-08-19 12:06:42 | Mike           | Hillyer          |
+| BESSIE        | MORRISON        | HOUSE DYNAMITE    | 2005-07-27 05:06:34 | Mike           | Hillyer          |
+| LAURA         | RODRIGUEZ       | HOURS RAGE        | 2005-08-19 00:42:24 | Mike           | Hillyer          |
+| HAZEL         | WARREN          | HOURS RAGE        | 2005-08-21 03:40:11 | Mike           | Hillyer          |
+| ANDREW        | PURDY           | HOURS RAGE        | 2005-07-27 10:30:41 | Mike           | Hillyer          |
+| DEBRA         | NELSON          | HOURS RAGE        | 2005-07-11 03:21:05 | Mike           | Hillyer          |
+| CARL          | ARTIS           | HOURS RAGE        | 2005-06-16 01:58:35 | Mike           | Hillyer          |
+| LYNN          | PAYNE           | HOURS RAGE        | 2005-08-22 16:49:02 | Mike           | Hillyer          |
+| THERESA       | WATSON          | HOURS RAGE        | 2005-05-30 01:17:25 | Mike           | Hillyer          |
+| GENE          | SANBORN         | HOURS RAGE        | 2005-08-02 21:07:06 | Mike           | Hillyer          |
+| PEDRO         | CHESTNUT        | HOTEL HAPPINESS   | 2005-08-22 19:23:58 | Mike           | Hillyer          |
+| ALLISON       | STANLEY         | HOTEL HAPPINESS   | 2005-05-28 00:24:58 | Mike           | Hillyer          |
+| ERIK          | GUILLEN         | HOTEL HAPPINESS   | 2005-08-19 07:53:58 | Mike           | Hillyer          |
+| HELEN         | HARRIS          | HOTEL HAPPINESS   | 2005-06-20 05:15:37 | Mike           | Hillyer          |
+| GAIL          | KNIGHT          | HORROR REIGN      | 2005-08-22 04:48:44 | Mike           | Hillyer          |
+| JASON         | MORRISSEY       | HORROR REIGN      | 2005-07-12 11:50:56 | Mike           | Hillyer          |
+| TROY          | QUIGLEY         | HORROR REIGN      | 2005-08-23 13:10:16 | Mike           | Hillyer          |
+| TARA          | RYAN            | HORROR REIGN      | 2005-07-28 16:35:16 | Mike           | Hillyer          |
+| JORGE         | OLIVARES        | HORROR REIGN      | 2005-08-21 03:51:52 | Mike           | Hillyer          |
+| ALVIN         | DELOACH         | HORROR REIGN      | 2005-07-28 23:59:02 | Mike           | Hillyer          |
+| APRIL         | BURNS           | HORROR REIGN      | 2005-07-08 01:51:32 | Mike           | Hillyer          |
+| DIANE         | COLLINS         | HORROR REIGN      | 2005-05-29 16:44:11 | Mike           | Hillyer          |
+| FREDDIE       | DUGGAN          | HORROR REIGN      | 2005-08-02 12:34:27 | Mike           | Hillyer          |
+| EDNA          | WEST            | HORROR REIGN      | 2005-06-19 12:12:30 | Mike           | Hillyer          |
+| HILDA         | HOPKINS         | HORROR REIGN      | 2005-08-01 10:03:20 | Mike           | Hillyer          |
+| RHONDA        | KENNEDY         | HORROR REIGN      | 2005-06-18 20:24:23 | Mike           | Hillyer          |
+| TONI          | HOLT            | HORROR REIGN      | 2005-05-29 09:26:34 | Mike           | Hillyer          |
+| MARK          | RINEHART        | HORROR REIGN      | 2005-08-21 09:19:49 | Mike           | Hillyer          |
+| FLORENCE      | WOODS           | HORROR REIGN      | 2005-07-11 08:25:22 | Mike           | Hillyer          |
+| DAN           | PAINE           | HORROR REIGN      | 2005-08-21 15:59:27 | Mike           | Hillyer          |
+| VANESSA       | SIMS            | HORROR REIGN      | 2005-07-29 08:42:04 | Mike           | Hillyer          |
+| EDITH         | MCDONALD        | HORN WORKING      | 2005-08-22 02:26:47 | Mike           | Hillyer          |
+| DEREK         | BLAKELY         | HORN WORKING      | 2005-07-28 02:24:23 | Mike           | Hillyer          |
+| REGINA        | BERRY           | HORN WORKING      | 2005-08-18 14:28:00 | Mike           | Hillyer          |
+| BESSIE        | MORRISON        | HORN WORKING      | 2005-07-30 22:20:04 | Mike           | Hillyer          |
+| MARTIN        | BALES           | HORN WORKING      | 2005-06-18 05:05:18 | Mike           | Hillyer          |
+| BETTY         | WHITE           | HORN WORKING      | 2005-08-18 19:16:47 | Mike           | Hillyer          |
+| KIMBERLY      | LEE             | HORN WORKING      | 2005-05-31 10:22:54 | Mike           | Hillyer          |
+| JESSIE        | BANKS           | HORN WORKING      | 2005-06-20 04:09:04 | Mike           | Hillyer          |
+| JUNE          | CARROLL         | HORN WORKING      | 2005-07-27 09:19:05 | Mike           | Hillyer          |
+| EDDIE         | TOMLIN          | HORN WORKING      | 2005-06-18 17:51:46 | Mike           | Hillyer          |
+| DARRELL       | POWER           | HOPE TOOTSIE      | 2005-07-30 20:22:17 | Mike           | Hillyer          |
+| CONNIE        | WALLACE         | HOPE TOOTSIE      | 2005-07-07 14:52:12 | Mike           | Hillyer          |
+| VERA          | MCCOY           | HOPE TOOTSIE      | 2005-07-30 05:28:40 | Mike           | Hillyer          |
+| VIOLA         | HANSON          | HOPE TOOTSIE      | 2005-07-10 15:05:42 | Mike           | Hillyer          |
+| BILLY         | POULIN          | HOPE TOOTSIE      | 2005-06-20 22:31:54 | Mike           | Hillyer          |
+| JORDAN        | ARCHULETA       | HOPE TOOTSIE      | 2005-08-22 00:24:37 | Mike           | Hillyer          |
+| HAZEL         | WARREN          | HOPE TOOTSIE      | 2005-07-28 06:10:55 | Mike           | Hillyer          |
+| VANESSA       | SIMS            | HOPE TOOTSIE      | 2005-08-17 10:59:00 | Mike           | Hillyer          |
+| KATIE         | ELLIOTT         | HOPE TOOTSIE      | 2005-08-20 03:07:47 | Mike           | Hillyer          |
+| CAROLYN       | PEREZ           | HOPE TOOTSIE      | 2005-07-31 19:23:00 | Mike           | Hillyer          |
+| CARMEN        | OWENS           | HOPE TOOTSIE      | 2005-06-17 09:30:05 | Mike           | Hillyer          |
+| BRYAN         | HARDISON        | HOOSIERS BIRDCAGE | 2005-08-17 03:12:04 | Mike           | Hillyer          |
+| ERICA         | MATTHEWS        | HOOSIERS BIRDCAGE | 2005-08-17 06:39:59 | Mike           | Hillyer          |
+| MARSHA        | DOUGLAS         | HOOSIERS BIRDCAGE | 2005-07-28 20:59:04 | Mike           | Hillyer          |
+| CONSTANCE     | REID            | HOOSIERS BIRDCAGE | 2005-06-19 21:34:54 | Mike           | Hillyer          |
+| TERESA        | ROGERS          | HOOK CHARIOTS     | 2005-08-19 02:57:37 | Mike           | Hillyer          |
+| HARRY         | ARCE            | HOOK CHARIOTS     | 2005-07-07 04:34:09 | Mike           | Hillyer          |
+| CATHERINE     | CAMPBELL        | HOOK CHARIOTS     | 2005-08-23 10:35:51 | Mike           | Hillyer          |
+| JULIA         | FLORES          | HOOK CHARIOTS     | 2005-07-30 04:06:25 | Mike           | Hillyer          |
+| KATHY         | JAMES           | HOOK CHARIOTS     | 2005-07-11 02:08:55 | Mike           | Hillyer          |
+| ALMA          | AUSTIN          | HOOK CHARIOTS     | 2005-07-29 01:20:16 | Mike           | Hillyer          |
+| VIRGIL        | WOFFORD         | HOOK CHARIOTS     | 2005-07-07 11:36:20 | Mike           | Hillyer          |
+| DWIGHT        | LOMBARDI        | HOOK CHARIOTS     | 2005-06-21 02:30:37 | Mike           | Hillyer          |
+| RAMONA        | HALE            | HONEY TIES        | 2005-08-20 19:29:44 | Mike           | Hillyer          |
+| CHARLIE       | BESS            | HONEY TIES        | 2005-07-31 09:09:22 | Mike           | Hillyer          |
+| DARYL         | LARUE           | HONEY TIES        | 2005-07-30 04:53:23 | Mike           | Hillyer          |
+| JAMES         | GANNON          | HONEY TIES        | 2005-07-06 00:00:03 | Mike           | Hillyer          |
+| ARMANDO       | GRUBER          | HONEY TIES        | 2005-05-26 05:29:49 | Mike           | Hillyer          |
+| ETHEL         | WEBB            | HONEY TIES        | 2005-07-28 10:27:46 | Mike           | Hillyer          |
+| VIOLET        | RODRIQUEZ       | HONEY TIES        | 2005-08-19 15:23:41 | Mike           | Hillyer          |
+| RONNIE        | RICKETTS        | HONEY TIES        | 2005-08-01 11:44:13 | Mike           | Hillyer          |
+| RHONDA        | KENNEDY         | HONEY TIES        | 2005-07-06 09:10:37 | Mike           | Hillyer          |
+| ELLEN         | SIMPSON         | HOMICIDE PEACH    | 2005-08-21 16:52:29 | Mike           | Hillyer          |
+| HELEN         | HARRIS          | HOMICIDE PEACH    | 2005-08-18 04:39:10 | Mike           | Hillyer          |
+| TOMMY         | COLLAZO         | HOMICIDE PEACH    | 2005-07-30 01:00:17 | Mike           | Hillyer          |
+| CHRISTIAN     | JUNG            | HOMICIDE PEACH    | 2005-07-27 05:41:20 | Mike           | Hillyer          |
+| NELSON        | CHRISTENSON     | HOMICIDE PEACH    | 2005-06-17 15:07:30 | Mike           | Hillyer          |
+| DARLENE       | ROSE            | HOMICIDE PEACH    | 2005-08-20 10:11:07 | Mike           | Hillyer          |
+| PATRICK       | NEWSOM          | HOMICIDE PEACH    | 2005-08-01 17:11:52 | Mike           | Hillyer          |
+| DAISY         | BATES           | HOMICIDE PEACH    | 2005-06-17 07:14:15 | Mike           | Hillyer          |
+| MELINDA       | FERNANDEZ       | HOMICIDE PEACH    | 2005-05-28 03:57:28 | Mike           | Hillyer          |
+| SARA          | PERRY           | HOMICIDE PEACH    | 2005-08-19 11:27:43 | Mike           | Hillyer          |
+| LAURIE        | LAWRENCE        | HOMICIDE PEACH    | 2005-07-31 11:59:32 | Mike           | Hillyer          |
++---------------+-----------------+-------------------+---------------------+----------------+------------------+
+100 rows in set (0.0940 sec)
+ MySQL  localhost:33060+ ssl  sakila  SQL >
