@@ -1,0 +1,242 @@
+MySQL Shell 8.0.43
+
+Copyright (c) 2016, 2025, Oracle and/or its affiliates.
+Oracle is a registered trademark of Oracle Corporation and/or its affiliates.
+Other names may be trademarks of their respective owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+ MySQL  SQL > \c root@localhost
+Creating a session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Your MySQL connection id is 8 (X protocol)
+Server version: 8.0.43 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:33060+ ssl  SQL > show grants for "prueba3"@"localhost";
++--------------------------------------------------------------------+
+| Grants for prueba3@localhost                                       |
++--------------------------------------------------------------------+
+| GRANT USAGE ON *.* TO `prueba3`@`localhost`                        |
+| GRANT SELECT (`valor`) ON `tbd2`.`tablaa` TO `prueba3`@`localhost` |
++--------------------------------------------------------------------+
+2 rows in set (0.0025 sec)
+ MySQL  localhost:33060+ ssl  SQL > show grants for "prueba5"@"localhost";
+ERROR: 1141: There is no such grant defined for user 'prueba5' on host 'localhost'
+ MySQL  localhost:33060+ ssl  SQL > show grants for "prueba4"@"localhost";
+ERROR: 1141: There is no such grant defined for user 'prueba4' on host 'localhost'
+ MySQL  localhost:33060+ ssl  SQL > revoke insert on tbd2.* to "prueba"@"localhost";
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to "prueba"@"localhost"' at line 1
+ MySQL  localhost:33060+ ssl  SQL > revoke insert on tbd2.* to "prueba1"@"localhost";
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to "prueba1"@"localhost"' at line 1
+ MySQL  localhost:33060+ ssl  SQL > revoke insert on tbd2.* to "prueba3"@"localhost";
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to "prueba3"@"localhost"' at line 1
+ MySQL  localhost:33060+ ssl  SQL > revoke insert on tbd2.* to "prueba2"@"localhost";
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'to "prueba2"@"localhost"' at line 1
+ MySQL  localhost:33060+ ssl  SQL > revoke insert in tbd2.* to "prueba2"@"localhost";
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'in tbd2.* to "prueba2"@"localhost"' at line 1
+ MySQL  localhost:33060+ ssl  SQL > revoke insert in tbd2.* to "prueba1"@"localhost";
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'in tbd2.* to "prueba1"@"localhost"' at line 1
+ MySQL  localhost:33060+ ssl  SQL > revoke insert in tbd2.* to "prueba"@"localhost";
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'in tbd2.* to "prueba"@"localhost"' at line 1
+ MySQL  localhost:33060+ ssl  SQL > show users;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'users' at line 1
+ MySQL  localhost:33060+ ssl  SQL > revoke insert on tbd2.* from "prueba2"@"localhost";
+ERROR: 1141: There is no such grant defined for user 'prueba2' on host 'localhost'
+ MySQL  localhost:33060+ ssl  SQL > revoke insert on tbd2.* from "prueba"@"localhost";
+Query OK, 0 rows affected (0.0489 sec)
+ MySQL  localhost:33060+ ssl  SQL > \c prueba@localhost
+Creating a session to 'prueba@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Error during auto-completion cache update: Access denied; you need (at least one of) the PROCESS privilege(s) for this operation
+Closing old connection...
+Your MySQL connection id is 9 (X protocol)
+Server version: 8.0.43 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:33060+ ssl  SQL > use tbd2;
+Default schema set to `tbd2`.
+Fetching global names, object names from `tbd2` for auto-completion... Press ^C to stop.
+ MySQL  localhost:33060+ ssl  tbd2  SQL > show tables;
++----------------+
+| Tables_in_tbd2 |
++----------------+
+| asignatura     |
+| cliente        |
+| detallehorario |
+| estudiante     |
+| horario        |
+| producto       |
+| prueba         |
+| tablaa         |
+| tablab         |
+| venta          |
+| venta_detalle  |
++----------------+
+11 rows in set (0.0029 sec)
+ MySQL  localhost:33060+ ssl  tbd2  SQL > desc venta;
++-----------+------+------+-----+---------+----------------+
+| Field     | Type | Null | Key | Default | Extra          |
++-----------+------+------+-----+---------+----------------+
+| idventa   | int  | NO   | PRI | NULL    | auto_increment |
+| fecha     | date | NO   |     | NULL    |                |
+| idcliente | int  | NO   | MUL | NULL    |                |
++-----------+------+------+-----+---------+----------------+
+3 rows in set (0.0042 sec)
+ MySQL  localhost:33060+ ssl  tbd2  SQL > insert into venta(fecha, idcliente);
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1
+ MySQL  localhost:33060+ ssl  tbd2  SQL > insert into venta(fecha, idcliente) values("2025-12-1",1);
+ERROR: 1142: INSERT command denied to user 'prueba'@'localhost' for table 'venta'
+ MySQL  localhost:33060+ ssl  tbd2  SQL > insert into venta(fecha, idcliente) values("2025-10-27" ,1);
+ERROR: 1142: INSERT command denied to user 'prueba'@'localhost' for table 'venta'
+ MySQL  localhost:33060+ ssl  tbd2  SQL > \c root@localhost
+Creating a session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Closing old connection...
+Your MySQL connection id is 10 (X protocol)
+Server version: 8.0.43 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:33060+ ssl  SQL > create user "usuarioroles"@l"localhost" identified by "xxx.123";
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '"localhost" identified by "xxx.123"' at line 1
+ MySQL  localhost:33060+ ssl  SQL > create user "usuarioroles"@"localhost" identified by "xxx.123";
+Query OK, 0 rows affected (0.0255 sec)
+ MySQL  localhost:33060+ ssl  SQL > create role "segundaunidad";
+Query OK, 0 rows affected (0.0389 sec)
+ MySQL  localhost:33060+ ssl  SQL > grant all on tbd2.* to "segundaunidad";
+Query OK, 0 rows affected (0.0412 sec)
+ MySQL  localhost:33060+ ssl  SQL > grant "segundaunidad" to "usuarioroles"@"localhost";
+Query OK, 0 rows affected (0.0400 sec)
+ MySQL  localhost:33060+ ssl  SQL > \c usuarioroles@localhost;
+Creating a session to 'usuarioroles@localhost;'
+Please provide the password for 'usuarioroles@localhost;': *******
+MySQL Error 2005: No such host is known 'localhost;'
+ MySQL  localhost:33060+ ssl  SQL > \c usuarioroles@localhost;
+Creating a session to 'usuarioroles@localhost;'
+Please provide the password for 'usuarioroles@localhost;': *******
+MySQL Error 2005: No such host is known 'localhost;'
+ MySQL  localhost:33060+ ssl  SQL > select user, host from mysql user;
+ERROR: 1046: No database selected
+ MySQL  localhost:33060+ ssl  SQL > select user, host from mysql.user;
++------------------+-----------+
+| user             | host      |
++------------------+-----------+
+| segundaunidad    | %         |
+| mysql.infoschema | localhost |
+| mysql.session    | localhost |
+| mysql.sys        | localhost |
+| prueba           | localhost |
+| prueba2          | localhost |
+| prueba3          | localhost |
+| root             | localhost |
+| usuarioroles     | localhost |
++------------------+-----------+
+9 rows in set (0.0012 sec)
+ MySQL  localhost:33060+ ssl  SQL > \c --mc usuarioroles@localhost
+Creating a Classic session to 'usuarioroles@localhost'
+Please provide the password for 'usuarioroles@localhost': *******
+Save password for 'usuarioroles@localhost'? [Y]es/[N]o/Ne[v]er (default No): y
+Fetching global names for auto-completion... Press ^C to stop.
+Error during auto-completion cache update: Access denied; you need (at least one of) the PROCESS privilege(s) for this operation
+Closing old connection...
+Your MySQL connection id is 11
+Server version: 8.0.43 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:3306 ssl  SQL > use tbd2;
+MySQL Error 1044: Access denied for user 'usuarioroles'@'localhost' to database 'tbd2'
+ MySQL  localhost:3306 ssl  SQL > \c root@localhost;
+Creating a session to 'root@localhost;'
+Please provide the password for 'root@localhost;':
+Cancelled
+ MySQL  localhost:3306 ssl  SQL > \c root@localhost
+Creating a session to 'root@localhost'
+Fetching global names for auto-completion... Press ^C to stop.
+Closing old connection...
+Your MySQL connection id is 12 (X protocol)
+Server version: 8.0.43 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+ MySQL  localhost:33060+ ssl  SQL > use tbd2;
+Default schema set to `tbd2`.
+Fetching global names, object names from `tbd2` for auto-completion... Press ^C to stop.
+ MySQL  localhost:33060+ ssl  tbd2  SQL > desc prueba;
++-------+------+------+-----+---------+-------+
+| Field | Type | Null | Key | Default | Extra |
++-------+------+------+-----+---------+-------+
+| id    | int  | YES  |     | NULL    |       |
++-------+------+------+-----+---------+-------+
+1 row in set (0.0050 sec)
+ MySQL  localhost:33060+ ssl  tbd2  SQL > drop table prueba;
+Query OK, 0 rows affected (0.0869 sec)
+ MySQL  localhost:33060+ ssl  tbd2  SQL > create table prueba(
+                                       -> nombre varchar(20),
+                                       -> valor int
+                                       -> );
+Query OK, 0 rows affected (0.0962 sec)
+ MySQL  localhost:33060+ ssl  tbd2  SQL > desc prueba;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| nombre | varchar(20) | YES  |     | NULL    |       |
+| valor  | int         | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+2 rows in set (0.0033 sec)
+ MySQL  localhost:33060+ ssl  tbd2  SQL > insert into prueba
+                                       -> values("Juan", 100), ("Ana", 500);
+Query OK, 2 rows affected (0.0503 sec)
+
+Records: 2  Duplicates: 0  Warnings: 0
+ MySQL  localhost:33060+ ssl  tbd2  SQL > select * form prueba;
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'form prueba' at line 1
+ MySQL  localhost:33060+ ssl  tbd2  SQL > select * from prueba;
++--------+-------+
+| nombre | valor |
++--------+-------+
+| Juan   |   100 |
+| Ana    |   500 |
++--------+-------+
+2 rows in set (0.0011 sec)
+ MySQL  localhost:33060+ ssl  tbd2  SQL > start transaction;
+Query OK, 0 rows affected (0.0007 sec)
+ MySQL  localhost:33060+ ssl  tbd2  SQL > start transaction;
+Query OK, 0 rows affected (0.0006 sec)
+ MySQL  localhost:33060+ ssl  tbd2  SQL > update prueba ser valor = valor + 100
+                                       -> where nombre = "Juan";
+ERROR: 1064: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'valor = valor + 100
+where nombre = "Juan"' at line 1
+ MySQL  localhost:33060+ ssl  tbd2  SQL > update prueba set valor = valor + 100 where nombre = "Juan";
+Query OK, 1 row affected (0.0359 sec)
+
+Rows matched: 1  Changed: 1  Warnings: 0
+ MySQL  localhost:33060+ ssl  tbd2  SQL > update prueba set valor = valor - 100 where nombre = "Ana";
+Query OK, 1 row affected (0.0011 sec)
+
+Rows matched: 1  Changed: 1  Warnings: 0
+ MySQL  localhost:33060+ ssl  tbd2  SQL > commit;
+Query OK, 0 rows affected (0.0405 sec)
+ MySQL  localhost:33060+ ssl  tbd2  SQL > select * from prueba;
++--------+-------+
+| nombre | valor |
++--------+-------+
+| Juan   |   200 |
+| Ana    |   400 |
++--------+-------+
+2 rows in set (0.0012 sec)
+ MySQL  localhost:33060+ ssl  tbd2  SQL > start transaction;
+Query OK, 0 rows affected (0.0007 sec)
+ MySQL  localhost:33060+ ssl  tbd2  SQL > update prueba set valor = valor + 100 where nombre = "Juan";
+Query OK, 1 row affected (0.0014 sec)
+
+Rows matched: 1  Changed: 1  Warnings: 0
+ MySQL  localhost:33060+ ssl  tbd2  SQL > update prueba set valor = valor - 100 where nombre = "Ana";
+Query OK, 1 row affected (0.0011 sec)
+
+Rows matched: 1  Changed: 1  Warnings: 0
+ MySQL  localhost:33060+ ssl  tbd2  SQL > rollback;
+Query OK, 0 rows affected (0.0367 sec)
+ MySQL  localhost:33060+ ssl  tbd2  SQL > select * from prueba;
++--------+-------+
+| nombre | valor |
++--------+-------+
+| Juan   |   200 |
+| Ana    |   400 |
++--------+-------+
+2 rows in set (0.0011 sec)
+ MySQL  localhost:33060+ ssl  tbd2  SQL >
